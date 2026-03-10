@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
-using ModernMalick.Common.Patterns.MonoBehaviourExtensions;
+using ModernMalick.Audio;
+using ModernMalick.Core.LeanTween;
+using ModernMalick.Core.MonoBehaviourExtensions;
 using ModernMalick.Timers;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace ModernMalick.Player
+namespace ModernMalick.Player.Movement
 {
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerMovement : MonoBehaviourExtended
@@ -193,7 +195,7 @@ namespace ModernMalick.Player
             _coyoteTimeCounter = 0;
             _hasJumped = true;
             AddJumpForce(jumpForce);
-            TryPlayAudio(jumpClip);
+            AudioHelper.TryPlayAudio(audioSource, jumpClip);
         }
         
         private void PerformDoubleJump()
@@ -201,7 +203,7 @@ namespace ModernMalick.Player
             _playerBody.linearVelocity = new Vector3(_playerBody.linearVelocity.x, 0);
             AddJumpForce(doubleJumpForce);
             _canDoubleJump = false;
-            TryPlayAudio(doubleJumpClip);
+            AudioHelper.TryPlayAudio(audioSource, doubleJumpClip);
         }
         
         private void AddJumpForce(float force)
@@ -214,7 +216,7 @@ namespace ModernMalick.Player
             _coyoteTimeCounter = coyoteTime;
             _hasJumped = false;
             _canDoubleJump = true;
-            TryPlayAudio(landedClip);
+            AudioHelper.TryPlayAudio(audioSource, landedClip);
         }
 
         private void UpdateCoyoteTime()
@@ -247,11 +249,12 @@ namespace ModernMalick.Player
             {
                 _initialFOV = cinemachineCamera.Lens.FieldOfView;
                 var targetFov = _initialFOV + dashFOVIncrease;
-                Common.LeanTween.LeanTween.value(_initialFOV, targetFov, dashTweenTime)
+                LeanTween.value(_initialFOV, targetFov, dashTweenTime)
                     .setOnUpdate(fov => { cinemachineCamera.Lens.FieldOfView = fov; });
             }
             
-            TryPlayAudio(dashStartClip);
+            AudioHelper.TryPlayAudio(audioSource, dashStartClip);
+            
             
             if (dashParticles)
             {
@@ -261,7 +264,7 @@ namespace ModernMalick.Player
         
         private void OnDashReady()
         {
-            TryPlayAudio(dashReadyClip);
+            AudioHelper.TryPlayAudio(audioSource, dashReadyClip);
         }
         
         private void StopDash()
@@ -273,11 +276,11 @@ namespace ModernMalick.Player
             
             if (cinemachineCamera)
             {
-                Common.LeanTween.LeanTween.value(cinemachineCamera.Lens.FieldOfView, _initialFOV, dashTweenTime)
+                LeanTween.value(cinemachineCamera.Lens.FieldOfView, _initialFOV, dashTweenTime)
                     .setOnUpdate(value => { cinemachineCamera.Lens.FieldOfView = value; });
             }
             
-            TryPlayAudio(dashEndClip);
+            AudioHelper.TryPlayAudio(audioSource, dashEndClip);
             
             if (dashParticles)
             {
@@ -366,13 +369,6 @@ namespace ModernMalick.Player
                 var targetTilt = Quaternion.Euler(-(_airborneOffset / verticalMoveAmount) * verticalTiltAmount, 0f, 0f);
                 t.localRotation = Quaternion.Slerp(t.localRotation, targetTilt, Time.deltaTime * verticalTweenSpeed);
             }
-        }
-
-        private void TryPlayAudio(AudioClip clip)
-        {
-            if (!audioSource || !clip) return;
-            audioSource.clip = clip;
-            audioSource.Play();
         }
     }
 }
