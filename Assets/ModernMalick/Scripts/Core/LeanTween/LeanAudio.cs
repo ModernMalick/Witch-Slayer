@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ModernMalick.Common.LeanTween
+namespace ModernMalick.Core.LeanTween
 {
 	public class LeanAudioStream {
 

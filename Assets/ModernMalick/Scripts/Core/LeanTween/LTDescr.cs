@@ -3,7 +3,7 @@
 using System;
 using UnityEngine;
 
-namespace ModernMalick.Common.LeanTween
+namespace ModernMalick.Core.LeanTween
 {
 	/**
 * Internal Representation of a Tween<br>

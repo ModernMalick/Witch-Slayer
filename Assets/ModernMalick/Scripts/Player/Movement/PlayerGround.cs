@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ModernMalick.Player
+namespace ModernMalick.Player.Movement
 {
     [RequireComponent(typeof(SphereCollider))]
     public class PlayerGround : MonoBehaviour

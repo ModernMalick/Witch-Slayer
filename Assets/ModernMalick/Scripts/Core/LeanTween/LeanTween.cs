@@ -146,7 +146,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ModernMalick.Common.LeanTween
+namespace ModernMalick.Core.LeanTween
 {
     public enum TweenAction{
         MOVE_X,

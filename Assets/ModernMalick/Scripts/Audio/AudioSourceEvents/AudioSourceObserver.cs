@@ -1,8 +1,7 @@
 using System;
 using UnityEngine;
-using UnityEngine.Audio;
 
-namespace AudioSourceEvents
+namespace ModernMalick.Audio.AudioSourceEvents
 {
     [RequireComponent(typeof(AudioSource))]
     public class AudioSourceObserver : MonoBehaviour

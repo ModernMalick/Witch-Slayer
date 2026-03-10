@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ModernMalick.Common.Settings
+namespace ModernMalick.Settings
 {
     public class Quality : MonoBehaviour
     {

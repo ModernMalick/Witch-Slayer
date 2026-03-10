@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace ModernMalick.Common.LeanTween
+namespace ModernMalick.Core.LeanTween
 {
 	public class LeanTester : MonoBehaviour {
 		public float timeout = 15f;

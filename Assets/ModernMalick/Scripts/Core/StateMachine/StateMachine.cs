@@ -1,6 +1,6 @@
-using ModernMalick.Common.Patterns.MonoBehaviourExtensions;
+using ModernMalick.Core.MonoBehaviourExtensions;
 
-namespace ModernMalick.Common.Patterns.StateMachine
+namespace ModernMalick.Core.StateMachine
 {
     public class StateMachine : MonoBehaviourExtended
     {

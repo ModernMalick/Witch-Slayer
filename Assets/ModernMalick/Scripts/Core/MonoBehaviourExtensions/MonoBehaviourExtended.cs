@@ -5,7 +5,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace ModernMalick.Common.Patterns.MonoBehaviourExtensions
+namespace ModernMalick.Core.MonoBehaviourExtensions
 {
     /// <summary>
     /// Derive from this instead of <c>MonoBehaviour</c>. If you want to use Awake() in your script, hide the method (with the <c>new</c> keyword) and call <c>base.Awake();</c>

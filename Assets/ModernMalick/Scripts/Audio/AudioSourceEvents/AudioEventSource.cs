@@ -1,6 +1,6 @@
 using System;
 
-namespace AudioSourceEvents
+namespace ModernMalick.Audio.AudioSourceEvents
 {
     public class AudioEventSource : AudioSourceObserver, IAudioEventSource
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ModernMalick.Common.LeanTween
+namespace ModernMalick.Core.LeanTween
 {
     /**
 * Use these smooth methods to move one value towards another<br /><br />

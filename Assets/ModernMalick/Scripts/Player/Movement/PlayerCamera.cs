@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace ModernMalick.Player
+namespace ModernMalick.Player.Movement
 {
     public class PlayerCamera : MonoBehaviour
     {

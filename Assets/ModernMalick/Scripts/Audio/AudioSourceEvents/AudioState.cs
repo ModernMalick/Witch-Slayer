@@ -1,4 +1,4 @@
-namespace AudioSourceEvents
+namespace ModernMalick.Audio.AudioSourceEvents
 {
     public enum AudioState
     {

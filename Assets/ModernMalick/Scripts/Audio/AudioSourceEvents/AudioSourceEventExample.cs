@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace AudioSourceEvents
+namespace ModernMalick.Audio.AudioSourceEvents
 {
     public class AudioSourceEventExample : MonoBehaviour
     {

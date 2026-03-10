@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace ModernMalick.Common.Patterns.MonoBehaviourExtensions
+namespace ModernMalick.Core.MonoBehaviourExtensions
 {
     /// <summary>
     /// Makes the derived class a singleton MonoBehaviour.

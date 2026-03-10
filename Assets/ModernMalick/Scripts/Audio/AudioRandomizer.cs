@@ -1,4 +1,4 @@
-using AudioSourceEvents;
+using ModernMalick.Audio.AudioSourceEvents;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
