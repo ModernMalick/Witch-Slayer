@@ -7,13 +7,13 @@ namespace AudioSourceEvents
     [RequireComponent(typeof(AudioSource))]
     public class AudioSourceObserver : MonoBehaviour
     {
-        private AudioSource _audioSource;
+        protected AudioSource audioSource;
         private bool _previousState;
 
-        private void Awake()
+        protected void Awake()
         {
-            _audioSource = GetComponent<AudioSource>();
-            _audioSource.ignoreListenerPause = true;
+            audioSource = GetComponent<AudioSource>();
+            audioSource.ignoreListenerPause = true;
 
             HandleState();
         }
@@ -25,7 +25,7 @@ namespace AudioSourceEvents
 
         private void HandleState()
         {
-            if (_audioSource.isPlaying)
+            if (audioSource.isPlaying)
             {
                 HandlePlaying();
             }
@@ -34,7 +34,7 @@ namespace AudioSourceEvents
                 HandleStopped();
             }
 
-            _previousState = _audioSource.isPlaying;
+            _previousState = audioSource.isPlaying;
         }
 
         private void HandlePlaying()
@@ -78,17 +78,17 @@ namespace AudioSourceEvents
 
         private bool IsRandomAudioContainer()
         {
-            return _audioSource.clip is null && _audioSource.resource is not null;
+            return audioSource.clip is null && audioSource.resource is not null;
         }
 
         private bool HasNoProgress()
         {
-            return AlmostEqual(_audioSource.time, 0f);
+            return AlmostEqual(audioSource.time, 0f);
         }
         
         private bool HasPlayedToCompletion()
         {
-            return AlmostEqual(_audioSource.time, _audioSource.clip.length) || HasNoProgress();
+            return AlmostEqual(audioSource.time, audioSource.clip.length) || HasNoProgress();
         }
 
         protected virtual void OnAudioStart()
