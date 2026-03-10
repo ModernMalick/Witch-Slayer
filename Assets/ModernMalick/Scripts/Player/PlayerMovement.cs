@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using ModernMalick.Common.Patterns.MonoBehaviourExtensions;
 using ModernMalick.Timers;
 using Unity.Cinemachine;
@@ -43,7 +45,7 @@ namespace ModernMalick.Player
         [SerializeField] private ParticleSystem dashParticles;
         
         [Header("Tween Animations")]
-        [SerializeField] private Transform animationRoot;
+        [SerializeField] private List<Transform> animatedTransforms;
         [SerializeField] private float swayAmount = 0.025f;
         [SerializeField] private float swaySpeed = 4f;
         [SerializeField] private float maxSwayDistance = 0.1f;
@@ -68,7 +70,7 @@ namespace ModernMalick.Player
         
         private float _initialFOV;
         
-        private readonly Vector3 _initialAnimationRootLocalPosition;
+        private readonly List<Vector3> _initialLocalPositions = new();
         private Vector3 _targetPosition;
         private float _bobTimer;
         private float _bobOffset;
@@ -85,6 +87,9 @@ namespace ModernMalick.Player
         private void Start()
         {
             dashCooldown.Start();
+            
+            foreach (var t in animatedTransforms.Where(t => t != null))
+                _initialLocalPositions.Add(t.localPosition);
         }
 
         private void OnEnable()
@@ -297,14 +302,17 @@ namespace ModernMalick.Player
 
             _targetPosition = Vector3.ClampMagnitude(_targetPosition, maxSwayDistance);
 
-            var t = animationRoot;
-            if (t == null) return;
+            for (var i = 0; i < animatedTransforms.Count; i++)
+            {
+                var t = animatedTransforms[i];
+                if (t == null || !t.gameObject.activeSelf) continue;
 
-            t.localPosition = Vector3.Lerp(
-                t.localPosition,
-                _initialAnimationRootLocalPosition+ _targetPosition,
-                Time.deltaTime * swaySpeed
-            );
+                t.localPosition = Vector3.Lerp(
+                    t.localPosition,
+                    _initialLocalPositions[i] + _targetPosition,
+                    Time.deltaTime * swaySpeed
+                );
+            }
         }
 
         private void ApplyBob()
@@ -346,15 +354,18 @@ namespace ModernMalick.Player
         
         private void ApplyCombinedOffsets()
         {
-            var t = animationRoot;
-            if (t == null) return;
+            for (var i = 0; i < animatedTransforms.Count; i++)
+            {
+                var t = animatedTransforms[i];
+                if (t == null || !t.gameObject.activeSelf) continue;
 
-            var basePos = _initialAnimationRootLocalPosition + _targetPosition;
-            basePos.y += _bobOffset + _airborneOffset;
-            t.localPosition = Vector3.Lerp(t.localPosition, basePos, Time.deltaTime * swaySpeed);
+                var basePos = _initialLocalPositions[i] + _targetPosition;
+                basePos.y += _bobOffset + _airborneOffset;
+                t.localPosition = Vector3.Lerp(t.localPosition, basePos, Time.deltaTime * swaySpeed);
 
-            var targetTilt = Quaternion.Euler(-(_airborneOffset / verticalMoveAmount) * verticalTiltAmount, 0f, 0f);
-            t.localRotation = Quaternion.Slerp(t.localRotation, targetTilt, Time.deltaTime * verticalTweenSpeed);
+                var targetTilt = Quaternion.Euler(-(_airborneOffset / verticalMoveAmount) * verticalTiltAmount, 0f, 0f);
+                t.localRotation = Quaternion.Slerp(t.localRotation, targetTilt, Time.deltaTime * verticalTweenSpeed);
+            }
         }
 
         private void TryPlayAudio(AudioClip clip)
