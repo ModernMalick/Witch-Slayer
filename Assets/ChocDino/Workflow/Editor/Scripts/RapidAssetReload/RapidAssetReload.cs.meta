@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: ba7386d348ae63a448e74db49d2f98d3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {fileID: 2800000, guid: a79a4dc24e466bb439fddcb5d9d24792, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317979
+  packageName: Rapid Asset Reload
+  packageVersion: 1.0.6
+  assetPath: Assets/ChocDino/Workflow/Editor/Scripts/RapidAssetReload/RapidAssetReload.cs
+  uploadId: 862584

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ef034fd55d7cef841a1c2212a407e95e
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317979
+  packageName: Rapid Asset Reload
+  packageVersion: 1.0.6
+  assetPath: Assets/ChocDino/Workflow/Editor/Scripts/ChocDino.Workflow.Editor.asmdef
+  uploadId: 862584

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: b082fbaff5171074891a2c05b1c9fe4e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317979
+  packageName: Rapid Asset Reload
+  packageVersion: 1.0.6
+  assetPath: Assets/ChocDino/Workflow/Editor/Scripts/RapidAssetReload/Preferences_User.cs
+  uploadId: 862584

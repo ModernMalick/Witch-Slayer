@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d0bb5726beac1f94abdcedbd15288d99
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317979
+  packageName: Rapid Asset Reload
+  packageVersion: 1.0.6
+  assetPath: Assets/ChocDino/Workflow/Docs/RapidAssetReload.txt
+  uploadId: 862584

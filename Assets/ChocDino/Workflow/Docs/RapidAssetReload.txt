@@ -1,0 +1,9 @@
+RAPID ASSET RELOAD Quick Start:
+
+1) Open the Rapid Asset Reload window by going to the menu `Window > General > Chocolate Dinosaur > Rapid Asset Reload`.
+2) Drag the window and dock it somewhere in your UI.
+3) That's it!
+
+Website: https://www.chocdino.com/products/work-flow/rapid-asset-reload/about/
+Email: support@chocdino.com
+Discord: https://discord.gg/wKRzKAHVUE
