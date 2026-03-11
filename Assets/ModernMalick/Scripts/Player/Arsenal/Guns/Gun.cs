@@ -19,7 +19,7 @@ namespace ModernMalick.Player.Arsenal.Guns
         [Header("Parameters")]
         [SerializeField] private int damage = 10;
         [SerializeField] public float attackRate = 1f;
-        [field: SerializeField] public bool isAutomatic { get; private set; }
+        [field: SerializeField] public bool IsAutomatic { get; private set; }
         [SerializeField] private float range = 100;
         [SerializeField] private LayerMask mask;
         
@@ -64,6 +64,8 @@ namespace ModernMalick.Player.Arsenal.Guns
         
         private int _currentAmmo;
         private bool _isReloading;
+
+        private Crosshair _crosshair;
         
         public int CurrentAmmo
         {
@@ -246,11 +248,13 @@ namespace ModernMalick.Player.Arsenal.Guns
         private void Show()
         {
             LeanTween.moveLocalY(mesh, 0, selectionTime);
+            if(_crosshair) _crosshair.gameObject.SetActive(true);
         }
 
         private void Hide()
         {
             LeanTween.moveLocalY(mesh, deselectionY, 0);
+            if(_crosshair) _crosshair.gameObject.SetActive(false);
         }
         
         private void ResetTweens()
@@ -299,6 +303,13 @@ namespace ModernMalick.Player.Arsenal.Guns
             {
                 Instantiate(impactObject, hit.point, Quaternion.LookRotation(-hit.normal));
             }
+        }
+
+        public void CreateCrosshair(RectTransform crosshairRoot)
+        {
+            _crosshair = Instantiate(crosshairPrefab, crosshairRoot);
+            OnShotFired += () => _crosshair.AnimateShot(attackRate);
+            OnReloadStarted += time => _crosshair.AnimateReload(time);
         }
     }
 }

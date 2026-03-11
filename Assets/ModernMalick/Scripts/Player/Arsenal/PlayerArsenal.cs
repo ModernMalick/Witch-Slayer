@@ -44,6 +44,12 @@ namespace ModernMalick.Player.Arsenal
                 guns = new List<Gun>();
                 return;
             }
+            
+            foreach (var gun in guns)
+            {
+                gun.CreateCrosshair(crosshairRoot);
+            }
+            
             SelectedSlotIndex = 0;
         }
         
@@ -51,7 +57,7 @@ namespace ModernMalick.Player.Arsenal
         {
             if(!_shootInput || GetCurrentGun() == null) return;
             GetCurrentGun().TryAttack();
-            if(GetCurrentGun().isAutomatic) return;
+            if(GetCurrentGun().IsAutomatic) return;
             _shootInput = false;
         }
         

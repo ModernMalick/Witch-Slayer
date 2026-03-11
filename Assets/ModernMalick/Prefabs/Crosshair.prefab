@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3892360499442713631}
+  - component: {fileID: 1178023900516923397}
   m_Layer: 5
   m_Name: Crosshair
   m_TagString: Untagged
@@ -40,6 +41,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 24, y: 24}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1178023900516923397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663503750206481667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393252563f1c4f0eac1c273180e5e638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ModernMalick.Player.Arsenal.Guns.Crosshair
+  shotSize: {x: 32, y: 32}
+  shotTime: 0.1
 --- !u!1 &1759459774348425422
 GameObject:
   m_ObjectHideFlags: 0
