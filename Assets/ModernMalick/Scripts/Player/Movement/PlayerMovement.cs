@@ -16,6 +16,7 @@ namespace ModernMalick.Player.Movement
         [Header("Components")]
         [SerializeField] private PlayerGround playerGround;
         [SerializeField] private AudioSource audioSource;
+        [SerializeField] private GameObject crosshair;
         
         [Header("Horizontal")]
         [SerializeField] private float walkSpeed = 10f;
@@ -290,8 +291,7 @@ namespace ModernMalick.Player.Movement
         
         private void ApplySway()
         {
-            var localVelocity = transform.InverseTransformDirection(_playerBody.linearVelocity);
-            var horizontal = new Vector2(localVelocity.x, localVelocity.z);
+            var horizontal = new Vector2(_moveInput.x, _moveInput.y);
             if (horizontal.sqrMagnitude > 1f)
             {
                 horizontal.Normalize();
