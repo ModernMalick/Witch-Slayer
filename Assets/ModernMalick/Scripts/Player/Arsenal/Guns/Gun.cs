@@ -14,7 +14,6 @@ namespace ModernMalick.Player.Arsenal.Guns
         [Header("Components")]
         [SerializeField] private Transform originPoint;
         [SerializeField] private GameObject mesh;
-        [SerializeField] private Crosshair crosshairPrefab;
         
         [Header("Parameters")]
         [SerializeField] private int damage = 10;
@@ -59,6 +58,11 @@ namespace ModernMalick.Player.Arsenal.Guns
         [SerializeField] private AudioClip reloadStartClip;
         [SerializeField] private AudioClip reloadEndClip;
         
+        [Header("UI")]
+        [SerializeField] private Crosshair crosshairPrefab;
+        [SerializeField] private Sprite icon;
+        [SerializeField] private GunUI gunUIPrefab;
+        
         private Camera _playerCamera;
         private float _lastAttackTime;
         
@@ -66,6 +70,7 @@ namespace ModernMalick.Player.Arsenal.Guns
         private bool _isReloading;
 
         private Crosshair _crosshair;
+        private GunUI _gunUI;
         
         public int CurrentAmmo
         {
@@ -249,12 +254,14 @@ namespace ModernMalick.Player.Arsenal.Guns
         {
             LeanTween.moveLocalY(mesh, 0, selectionTime);
             if(_crosshair) _crosshair.gameObject.SetActive(true);
+            if(_gunUI) _gunUI.SetSelected(true);
         }
 
         private void Hide()
         {
             LeanTween.moveLocalY(mesh, deselectionY, 0);
             if(_crosshair) _crosshair.gameObject.SetActive(false);
+            if(_gunUI) _gunUI.SetSelected(false);
         }
         
         private void ResetTweens()
@@ -310,6 +317,23 @@ namespace ModernMalick.Player.Arsenal.Guns
             _crosshair = Instantiate(crosshairPrefab, crosshairRoot);
             OnShotFired += () => _crosshair.AnimateShot(attackRate);
             OnReloadStarted += time => _crosshair.AnimateReload(time);
+        }
+
+        public void CreateUI(RectTransform arsenalRoot)
+        {
+            _gunUI = Instantiate(gunUIPrefab, arsenalRoot);
+            if (icon) _gunUI.SetIcon(icon);
+            _gunUI.OnCurrentAmmoChanged(CurrentAmmo);
+            OnCurrentAmmoChanged += _gunUI.OnCurrentAmmoChanged;
+            if (infiniteReserveAmmo)
+            {
+                _gunUI.OnReserveAmmoChanged(magazineSize);
+            }
+            else if (ammoData)
+            {
+                _gunUI.OnReserveAmmoChanged(ammoData.CurrentReserveAmmo);
+                ammoData.OnCurrentReserveAmmoChanged += _gunUI.OnReserveAmmoChanged;
+            }
         }
     }
 }

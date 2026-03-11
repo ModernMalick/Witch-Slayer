@@ -16,7 +16,6 @@ namespace ModernMalick.Player.Movement
         [Header("Components")]
         [SerializeField] private PlayerGround playerGround;
         [SerializeField] private AudioSource audioSource;
-        [SerializeField] private GameObject crosshair;
         
         [Header("Horizontal")]
         [SerializeField] private float walkSpeed = 10f;

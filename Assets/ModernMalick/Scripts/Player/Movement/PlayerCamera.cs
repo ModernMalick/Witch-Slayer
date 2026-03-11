@@ -40,7 +40,6 @@ namespace ModernMalick.Player.Movement
             _pitch = Mathf.Clamp(_pitch, -maxVerticalAngle, maxVerticalAngle);
 
             transform.localRotation = Quaternion.Euler(_pitch, _yaw, 0f);
-            playerBody.localRotation = Quaternion.Euler(0f, _yaw, 0f);
         }
     }
 }

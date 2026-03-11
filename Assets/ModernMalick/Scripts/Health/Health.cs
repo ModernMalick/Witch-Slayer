@@ -7,7 +7,7 @@ namespace ModernMalick.Health
     {
         [SerializeField] private int startHealth;
         [SerializeField] private int maxHealth;
-
+        
         public event Action<int> OnHealthChanged = delegate { };
         public event Action<int> OnHealthModified = delegate { };
         public event Action<float> OnHealthPercentageChanged = delegate { };

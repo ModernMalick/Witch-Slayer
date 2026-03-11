@@ -10,7 +10,10 @@ namespace ModernMalick.Player.Arsenal
     {
         [SerializeField] private List<Gun> guns;
         [SerializeField] private PlayerIK weaponIk;
+        
+        [Header("UI")]
         [SerializeField] private RectTransform crosshairRoot;
+        [SerializeField] private RectTransform arsenalRoot;
         
         private int _selectedSlotIndex;
         
@@ -48,6 +51,7 @@ namespace ModernMalick.Player.Arsenal
             foreach (var gun in guns)
             {
                 gun.CreateCrosshair(crosshairRoot);
+                gun.CreateUI(arsenalRoot);
             }
             
             SelectedSlotIndex = 0;
