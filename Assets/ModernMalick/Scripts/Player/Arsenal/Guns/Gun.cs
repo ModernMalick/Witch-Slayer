@@ -91,7 +91,6 @@ namespace ModernMalick.Player.Arsenal.Guns
         
         private void Awake()
         {
-            Hide();
             _playerCamera = Camera.main;
             CurrentAmmo = startingAmmo;
             
@@ -257,7 +256,7 @@ namespace ModernMalick.Player.Arsenal.Guns
             if(_gunUI) _gunUI.SetSelected(true);
         }
 
-        private void Hide()
+        public void Hide()
         {
             LeanTween.moveLocalY(mesh, deselectionY, 0);
             if(_crosshair) _crosshair.gameObject.SetActive(false);

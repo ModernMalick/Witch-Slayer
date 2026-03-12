@@ -52,6 +52,7 @@ namespace ModernMalick.Player.Arsenal
             {
                 gun.CreateCrosshair(crosshairRoot);
                 gun.CreateUI(arsenalRoot);
+                gun.Hide();
             }
             
             SelectedSlotIndex = 0;
@@ -99,6 +100,7 @@ namespace ModernMalick.Player.Arsenal
         
         private void ChangeSlot(int direction)
         {
+            if(guns.Count < 2) return;
             SelectedSlotIndex = (SelectedSlotIndex + direction + guns.Count) % guns.Count;
         }
 
