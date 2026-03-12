@@ -103,6 +103,7 @@ namespace ModernMalick.Player.Arsenal.Guns
         private void OnEnable()
         {
             Show();
+            _lastAttackTime = Time.time - 1 / attackRate;
         }
 
         private void OnDisable()
@@ -159,8 +160,6 @@ namespace ModernMalick.Player.Arsenal.Guns
                 }
 
                 CreatePellet(start, end, hit);
-                OnPelletHit.Invoke(hit);
-                HitVFX(hit);
             }
             OnShotFired.Invoke();
             ShotVFX();
@@ -173,6 +172,8 @@ namespace ModernMalick.Player.Arsenal.Guns
                 .setSpeed(pelletSpeed)
                 .setOnComplete(() =>
                 {
+                    OnPelletHit.Invoke(hit);
+                    HitVFX(hit);
                     if(hit.collider != null)
                     {
                         Health.Health.TryModifyHealth(hit.collider.gameObject, -damage);
@@ -322,7 +323,7 @@ namespace ModernMalick.Player.Arsenal.Guns
         {
             _gunUI = Instantiate(gunUIPrefab, arsenalRoot);
             if (icon) _gunUI.SetIcon(icon);
-            _gunUI.OnCurrentAmmoChanged(CurrentAmmo);
+            _gunUI.OnCurrentAmmoChanged(startingAmmo);
             OnCurrentAmmoChanged += _gunUI.OnCurrentAmmoChanged;
             if (infiniteReserveAmmo)
             {
