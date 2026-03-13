@@ -6,41 +6,35 @@ namespace ModernMalick.Player.Arsenal.Guns
     [CreateAssetMenu(menuName = "MM/Ammo")]
     public class AmmoData : ScriptableObject
     {
-        public int startingReserveAmmo;
-        public int maxReserveAmmo;
+        public bool infiniteAmmo;
+        public int startingAmmo;
         
-        private int _currentReserveAmmo;
-        public int CurrentReserveAmmo
+        private int _currentAmmo;
+        public int CurrentAmmo
         {
-            get =>  _currentReserveAmmo;
+            get =>  _currentAmmo;
             private set
             {
-                _currentReserveAmmo = value;
-                OnCurrentReserveAmmoChanged.Invoke(value);
+                _currentAmmo = value;
+                OnAmmoChanged.Invoke(value);
             }
         }
         
-        public event Action<int> OnCurrentReserveAmmoChanged = delegate { };
+        public event Action<int> OnAmmoChanged = delegate { };
 
         public void Initialize()
         {
-            CurrentReserveAmmo = startingReserveAmmo;
+            CurrentAmmo = startingAmmo;
         }
 
-        public int TopUp(int amount)
+        public bool CanConsume()
         {
-            var space = maxReserveAmmo - CurrentReserveAmmo;
-            if (space <= 0) return amount;
-            var added = Mathf.Min(space, amount);
-            CurrentReserveAmmo += added;
-            return amount - added;
+            return CurrentAmmo > 0;
         }
         
-        public int Consume(int amount)
+        public void Consume()
         {
-            var taken = Mathf.Min(CurrentReserveAmmo, amount);
-            CurrentReserveAmmo -= taken;
-            return taken;
+            CurrentAmmo--;
         }
     }
 }
