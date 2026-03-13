@@ -172,7 +172,7 @@ namespace ModernMalick.Player.Arsenal.Guns
         
         private void ShotVFX()
         {
-            AudioHelper.TryPlayAudio(audioSource, shotClip);
+            AudioManager.TryPlayAudio(audioSource, shotClip);
             
             ResetTweens();
             

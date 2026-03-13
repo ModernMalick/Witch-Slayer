@@ -36,7 +36,7 @@ namespace ModernMalick.Player
 
         private void OnHurt(int health)
         {
-            AudioHelper.TryPlayAudio(healthAudio, hurtClip);
+            AudioManager.TryPlayAudio(healthAudio, hurtClip);
             
             if (hurtParticles)
             {
@@ -51,7 +51,7 @@ namespace ModernMalick.Player
         
         private void OnHeal(int health)
         {
-            AudioHelper.TryPlayAudio(healthAudio, healClip);
+            AudioManager.TryPlayAudio(healthAudio, healClip);
             if (healParticles)
             {
                 healParticles.Play();

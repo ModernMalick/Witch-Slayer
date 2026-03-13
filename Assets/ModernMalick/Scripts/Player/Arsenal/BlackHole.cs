@@ -75,7 +75,7 @@ namespace ModernMalick.Player.Arsenal
                 impulseSource.GenerateImpulse();
             }
             
-            AudioHelper.TryPlayAudio(audioSource, explosionClip);
+            AudioManager.TryPlayAudio(audioSource, explosionClip);
             
             if (audioSource)
             {

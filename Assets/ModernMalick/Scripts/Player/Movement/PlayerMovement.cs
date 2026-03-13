@@ -195,7 +195,7 @@ namespace ModernMalick.Player.Movement
             _coyoteTimeCounter = 0;
             _hasJumped = true;
             AddJumpForce(jumpForce);
-            AudioHelper.TryPlayAudio(audioSource, jumpClip);
+            AudioManager.TryPlayAudio(audioSource, jumpClip);
         }
         
         private void PerformDoubleJump()
@@ -203,7 +203,7 @@ namespace ModernMalick.Player.Movement
             _playerBody.linearVelocity = new Vector3(_playerBody.linearVelocity.x, 0);
             AddJumpForce(doubleJumpForce);
             _canDoubleJump = false;
-            AudioHelper.TryPlayAudio(audioSource, doubleJumpClip);
+            AudioManager.TryPlayAudio(audioSource, doubleJumpClip);
         }
         
         private void AddJumpForce(float force)
@@ -216,7 +216,7 @@ namespace ModernMalick.Player.Movement
             _coyoteTimeCounter = coyoteTime;
             _hasJumped = false;
             _canDoubleJump = true;
-            AudioHelper.TryPlayAudio(audioSource, landedClip);
+            AudioManager.TryPlayAudio(audioSource, landedClip);
         }
 
         private void UpdateCoyoteTime()
@@ -253,7 +253,7 @@ namespace ModernMalick.Player.Movement
                     .setOnUpdate(fov => { cinemachineCamera.Lens.FieldOfView = fov; });
             }
             
-            AudioHelper.TryPlayAudio(audioSource, dashStartClip);
+            AudioManager.TryPlayAudio(audioSource, dashStartClip);
             
             
             if (dashParticles)
@@ -264,7 +264,7 @@ namespace ModernMalick.Player.Movement
         
         private void OnDashReady()
         {
-            AudioHelper.TryPlayAudio(audioSource, dashReadyClip);
+            AudioManager.TryPlayAudio(audioSource, dashReadyClip);
         }
         
         private void StopDash()
@@ -280,7 +280,7 @@ namespace ModernMalick.Player.Movement
                     .setOnUpdate(value => { cinemachineCamera.Lens.FieldOfView = value; });
             }
             
-            AudioHelper.TryPlayAudio(audioSource, dashEndClip);
+            AudioManager.TryPlayAudio(audioSource, dashEndClip);
             
             if (dashParticles)
             {

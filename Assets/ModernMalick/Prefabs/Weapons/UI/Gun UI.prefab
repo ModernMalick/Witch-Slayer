@@ -131,7 +131,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 25}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -48, y: -8}
+  m_AnchoredPosition: {x: -56, y: 0}
   m_SizeDelta: {x: 96, y: 48}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1986273119997145498
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 898f8aa70f03b34448db20bbd1e3d5a4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c223be2bef2e86740ad6cf1c452a5169, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -258,8 +258,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c107647c7f894b047802a1cdc4cde5eb, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: ba5707112abf9874b86c70ab3ed4ca92, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -473,8 +473,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -539,7 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
-  m_MinWidth: 48
+  m_MinWidth: 52
   m_MinHeight: -1
   m_PreferredWidth: -1
   m_PreferredHeight: -1

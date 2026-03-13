@@ -36,5 +36,10 @@ namespace ModernMalick.Player.Arsenal.Guns
         {
             CurrentAmmo--;
         }
+
+        public void AddAmmo(int amount)
+        {
+            CurrentAmmo += amount;
+        }
     }
 }
