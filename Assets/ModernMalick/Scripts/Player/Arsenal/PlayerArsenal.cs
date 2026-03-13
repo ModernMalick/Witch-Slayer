@@ -15,6 +15,9 @@ namespace ModernMalick.Player.Arsenal
         [SerializeField] private RectTransform crosshairRoot;
         [SerializeField] private RectTransform arsenalRoot;
         
+        [Header("Audio")]
+        [SerializeField] private AudioSource audioSource;
+        
         private int _selectedSlotIndex;
         
         public int SelectedSlotIndex
@@ -33,6 +36,11 @@ namespace ModernMalick.Player.Arsenal
                 {
                     weaponIk.SetWeapon(GetCurrentGun());
                 }
+
+                if (audioSource)
+                {
+                    audioSource.Play();
+                }
             }
         }
         
@@ -50,6 +58,7 @@ namespace ModernMalick.Player.Arsenal
             
             foreach (var gun in guns)
             {
+                gun.Initialize();
                 gun.CreateCrosshair(crosshairRoot);
                 gun.CreateUI(arsenalRoot);
                 gun.Hide();
@@ -69,12 +78,6 @@ namespace ModernMalick.Player.Arsenal
         public void OnShoot(InputValue value)
         {
             _shootInput = value.isPressed;
-        }
-
-        public void OnReload(InputValue value)
-        {
-            if(!value.isPressed) return;
-            GetCurrentGun().Reload();
         }
 
         public void OnScroll(InputValue value)
