@@ -852,7 +852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ModernMalick.Player.Arsenal.Guns.Gun
   originPoint: {fileID: 1083094934}
-  mesh: {fileID: 614856334}
+  ammoData: {fileID: 11400000, guid: e486e4dc09044884f917af25021968fd, type: 2}
   damage: 0
   attackRate: 0.35
   <IsAutomatic>k__BackingField: 0
@@ -864,17 +864,10 @@ MonoBehaviour:
   pelletSpeed: 15
   pelletCount: 1
   pelletsAngle: 0
-  useAmmo: 1
-  magazineSize: 1
-  startingAmmo: 1
-  reloadTime: 2.6
-  infiniteReserveAmmo: 1
-  ammoData: {fileID: 0}
+  mesh: {fileID: 614856334}
   recoilPosition: {x: 0, y: 0, z: -0.25}
   recoilRotation: {x: -40, y: 0, z: 0}
   recoilStartTime: 0.1
-  reloadRotation: {x: 45, y: 0, z: 0}
-  reloadPosition: {x: 0, y: -1, z: 0}
   selectionTime: 0.25
   deselectionY: -1
   <RightGrip>k__BackingField: {fileID: 993730694}
@@ -885,8 +878,6 @@ MonoBehaviour:
   muzzleParticles: {fileID: 307270134}
   audioSource: {fileID: 1168474627}
   shotClip: {fileID: 8300000, guid: ab7643d9386428e4f88f8f6fbfe942e6, type: 3}
-  reloadStartClip: {fileID: 8300000, guid: 94416ab36d0915140a63303b116f5952, type: 3}
-  reloadEndClip: {fileID: 0}
   crosshairPrefab: {fileID: 4670790023732722366, guid: 5ef310ec719e2094597b0245d10b1133, type: 3}
   icon: {fileID: 21300000, guid: 06c7f1c205efba0418760e874c019102, type: 3}
   gunUIPrefab: {fileID: 7580096765284750751, guid: 484a8ededd86adf4fa4d2a43becfbe37, type: 3}
@@ -1679,7 +1670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ModernMalick.Player.Arsenal.Guns.Gun
   originPoint: {fileID: 45590284}
-  mesh: {fileID: 1363166947}
+  ammoData: {fileID: 11400000, guid: fa9944149792951438fc6218869d2561, type: 2}
   damage: 12
   attackRate: 4.5
   <IsAutomatic>k__BackingField: 0
@@ -1691,17 +1682,10 @@ MonoBehaviour:
   pelletSpeed: 100
   pelletCount: 1
   pelletsAngle: 0
-  useAmmo: 1
-  magazineSize: 12
-  startingAmmo: 12
-  reloadTime: 1.2
-  infiniteReserveAmmo: 1
-  ammoData: {fileID: 0}
+  mesh: {fileID: 1363166947}
   recoilPosition: {x: 0, y: 0, z: -0.1}
   recoilRotation: {x: -20, y: 0, z: 0}
   recoilStartTime: 0.1
-  reloadRotation: {x: 45, y: 0, z: 0}
-  reloadPosition: {x: 0, y: -1, z: 0}
   selectionTime: 0.25
   deselectionY: -1
   <RightGrip>k__BackingField: {fileID: 1330489897}
@@ -1712,8 +1696,6 @@ MonoBehaviour:
   muzzleParticles: {fileID: 353142530}
   audioSource: {fileID: 2124376784}
   shotClip: {fileID: 8300000, guid: e47f5416b4a89124bbb92d8ccb0542b5, type: 3}
-  reloadStartClip: {fileID: 8300000, guid: 94416ab36d0915140a63303b116f5952, type: 3}
-  reloadEndClip: {fileID: 0}
   crosshairPrefab: {fileID: 1178023900516923397, guid: a1742abcae72efe429014bcf5e882888, type: 3}
   icon: {fileID: 21300000, guid: 898f8aa70f03b34448db20bbd1e3d5a4, type: 3}
   gunUIPrefab: {fileID: 7580096765284750751, guid: 484a8ededd86adf4fa4d2a43becfbe37, type: 3}
@@ -3191,6 +3173,8 @@ GameObject:
   m_Component:
   - component: {fileID: 924785206}
   - component: {fileID: 924785207}
+  - component: {fileID: 924785209}
+  - component: {fileID: 924785208}
   m_Layer: 9
   m_Name: Arsenal
   m_TagString: Untagged
@@ -3237,6 +3221,117 @@ MonoBehaviour:
   weaponIk: {fileID: 105498592}
   crosshairRoot: {fileID: 188944992}
   arsenalRoot: {fileID: 2105592952}
+  audioSource: {fileID: 924785209}
+--- !u!114 &924785208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924785205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aadce639cd844941b4e0235129eff56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ModernMalick.Audio.AudioRandomizer
+  pitchChangePercentage: 0.1
+--- !u!82 &924785209
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924785205}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -8844450763391788096, guid: 84af615af353e4942a25f77e14114e8c, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 9b5634bfffe90ab4f853bcc4ef8ffa72, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &993730693
 GameObject:
   m_ObjectHideFlags: 0
@@ -6557,7 +6652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ModernMalick.Player.Arsenal.Guns.Gun
   originPoint: {fileID: 1137893801}
-  mesh: {fileID: 1992033915}
+  ammoData: {fileID: 11400000, guid: 4713ba3011f86bf4d8fa5d5e86b21661, type: 2}
   damage: 8
   attackRate: 0.8
   <IsAutomatic>k__BackingField: 0
@@ -6569,17 +6664,10 @@ MonoBehaviour:
   pelletSpeed: 100
   pelletCount: 18
   pelletsAngle: 9
-  useAmmo: 1
-  magazineSize: 2
-  startingAmmo: 2
-  reloadTime: 1.5
-  infiniteReserveAmmo: 1
-  ammoData: {fileID: 0}
+  mesh: {fileID: 1992033915}
   recoilPosition: {x: 0, y: 0, z: -0.2}
   recoilRotation: {x: -30, y: 0, z: 0}
   recoilStartTime: 0.1
-  reloadRotation: {x: 45, y: 0, z: 0}
-  reloadPosition: {x: 0, y: -1, z: 0}
   selectionTime: 0.25
   deselectionY: -1
   <RightGrip>k__BackingField: {fileID: 1719906439}
@@ -6590,8 +6678,6 @@ MonoBehaviour:
   muzzleParticles: {fileID: 558061182}
   audioSource: {fileID: 840176819}
   shotClip: {fileID: 8300000, guid: ef1ae4e79f38d974c8ec599e31bdbc2c, type: 3}
-  reloadStartClip: {fileID: 8300000, guid: 94416ab36d0915140a63303b116f5952, type: 3}
-  reloadEndClip: {fileID: 0}
   crosshairPrefab: {fileID: 4670790023732722366, guid: 5ef310ec719e2094597b0245d10b1133, type: 3}
   icon: {fileID: 21300000, guid: b5591b747b403834c823b732aecf9189, type: 3}
   gunUIPrefab: {fileID: 7580096765284750751, guid: 484a8ededd86adf4fa4d2a43becfbe37, type: 3}
@@ -7534,7 +7620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ModernMalick.Player.Arsenal.Guns.Gun
   originPoint: {fileID: 1627631225}
-  mesh: {fileID: 1960186610}
+  ammoData: {fileID: 11400000, guid: d7612279c3cb3304aa6d4f181eb60396, type: 2}
   damage: 6
   attackRate: 14
   <IsAutomatic>k__BackingField: 1
@@ -7546,17 +7632,10 @@ MonoBehaviour:
   pelletSpeed: 100
   pelletCount: 1
   pelletsAngle: 2.2
-  useAmmo: 1
-  magazineSize: 40
-  startingAmmo: 40
-  reloadTime: 1.7
-  infiniteReserveAmmo: 1
-  ammoData: {fileID: 0}
+  mesh: {fileID: 1960186610}
   recoilPosition: {x: 0, y: 0, z: -0.1}
   recoilRotation: {x: -10, y: 0, z: 0}
   recoilStartTime: 0.1
-  reloadRotation: {x: 45, y: 0, z: 0}
-  reloadPosition: {x: 0, y: -1, z: 0}
   selectionTime: 0.25
   deselectionY: -1
   <RightGrip>k__BackingField: {fileID: 719303866}
@@ -7567,8 +7646,6 @@ MonoBehaviour:
   muzzleParticles: {fileID: 1889674386}
   audioSource: {fileID: 1113850642}
   shotClip: {fileID: 8300000, guid: 164a7185457e8ae418e2915239723c4d, type: 3}
-  reloadStartClip: {fileID: 8300000, guid: 94416ab36d0915140a63303b116f5952, type: 3}
-  reloadEndClip: {fileID: 0}
   crosshairPrefab: {fileID: 1178023900516923397, guid: a1742abcae72efe429014bcf5e882888, type: 3}
   icon: {fileID: 21300000, guid: dcdbcfa72f3ce5a40ae6e0a97f8fa0c7, type: 3}
   gunUIPrefab: {fileID: 7580096765284750751, guid: 484a8ededd86adf4fa4d2a43becfbe37, type: 3}
@@ -7641,7 +7718,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 8
-  m_Spacing: 64
+  m_Spacing: 32
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1

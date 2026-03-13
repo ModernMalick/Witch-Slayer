@@ -9,7 +9,7 @@ namespace ModernMalick.Player.Arsenal.Guns
     {
         [SerializeField] private Image icon;
         [SerializeField] private DynamicText magazine;
-        [SerializeField] private DynamicText reserve;
+        [SerializeField] private GameObject infiniteAmmoIcon;
 
         [Header("Tween")]
         [SerializeField] private float deselectedScale;
@@ -25,15 +25,16 @@ namespace ModernMalick.Player.Arsenal.Guns
         {
             icon.sprite = sprite;
         }
+
+        public void SetInfiniteAmmo()
+        {
+            magazine.gameObject.SetActive(false);
+            infiniteAmmoIcon.SetActive(true);
+        }
         
         public void OnCurrentAmmoChanged(int currentAmmo)
         {
             magazine.UpdateText(currentAmmo);
-        }
-
-        public void OnReserveAmmoChanged(int reserveAmmo)
-        {
-            reserve.UpdateText(reserveAmmo);
         }
     }
 }
