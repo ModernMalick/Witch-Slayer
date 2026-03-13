@@ -1,4 +1,5 @@
 using System;
+using ModernMalick.UI.Dynamic;
 using UnityEngine;
 
 namespace ModernMalick.Timers
@@ -7,6 +8,7 @@ namespace ModernMalick.Timers
     public class Cooldown
     {
         [SerializeField] private float duration = 1f;
+        [SerializeField] private DynamicProgress progress;
 
         public event Action<float> OnCooldownChanged = delegate { };
         public event Action OnCooldownFinished = delegate { };
@@ -19,6 +21,11 @@ namespace ModernMalick.Timers
             {
                 _cooldownProgress = value;
                 OnCooldownChanged.Invoke(value);
+
+                if (progress)
+                {
+                    progress.UpdateProgress(value);
+                }
                 
                 if (value >= 1f) OnCooldownFinished?.Invoke();
             }
