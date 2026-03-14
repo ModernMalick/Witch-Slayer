@@ -7,10 +7,14 @@ namespace ModernMalick.Health
     public class HealthCollider : MonoBehaviour
     {
         [SerializeField] private int healthChangeAmount;
-
+        
         [Header("Repetition")] 
         [SerializeField] private bool isRepeating;
         [SerializeField] private float repetitionRate;
+
+        [Header("VFX")]
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private Animator animator;
         
         private List<Health> _currentCollisions;
 
@@ -32,6 +36,16 @@ namespace ModernMalick.Health
             if(!health) return;
             if(_currentCollisions.Contains(health)) return;
             _currentCollisions.Add(health);
+
+            if (audioSource)
+            {
+                audioSource.Play();
+            }
+
+            if (animator)
+            {
+                animator.SetTrigger("Collision");
+            }
             
             if(isRepeating) return;
             health.ModifyHealth(healthChangeAmount);
