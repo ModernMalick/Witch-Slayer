@@ -1,6 +1,8 @@
 using ModernMalick.Audio;
 using Unity.Cinemachine;
 using UnityEngine;
+using System.Collections.Generic;
+using ModernMalick.Core.LeanTween;
 
 namespace ModernMalick.Player.Arsenal
 {
@@ -8,7 +10,6 @@ namespace ModernMalick.Player.Arsenal
     {
         [Header("Pull")]
         [SerializeField] private float radius = 5f;
-        [SerializeField] private float pullForce = 20f;
         [SerializeField] private float pullTime = 5f;
         [SerializeField] private LayerMask pullMask;
 
@@ -17,20 +18,20 @@ namespace ModernMalick.Player.Arsenal
         [SerializeField] private int damagePerTick = 1;
 
         [Header("Release")]
-        [SerializeField] private float explosionForce = 15f;
         [SerializeField] private int finalDamage = 1;
 
-        [Header("VFX")] 
+        [Header("VFX")]
         [SerializeField] private CinemachineImpulseSource impulseSource;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip explosionClip;
         [SerializeField] private ParticleSystem blackHoleParticles;
         [SerializeField] private ParticleSystem explosionParticles;
-        
+
         private float _elapsed;
         private float _damageTimer;
 
         private readonly Collider[] _results = new Collider[100];
+        private readonly HashSet<Transform> _pulled = new();
 
         private void FixedUpdate()
         {
@@ -49,75 +50,56 @@ namespace ModernMalick.Player.Arsenal
 
             for (var i = 0; i < count; i++)
             {
-                var rb = _results[i].attachedRigidbody;
-                if (!rb) continue;
+                var t = _results[i].transform;
+
+                if (!_pulled.Contains(t) && !expired)
+                {
+                    StartPull(t);
+                    _pulled.Add(t);
+                }
+
+                if (applyTickDamage)
+                    ApplyDamage(t.gameObject, damagePerTick);
 
                 if (expired)
-                {
-                    Release(rb);
-                }
-                else
-                {
-                    Pull(rb);
-
-                    if (applyTickDamage)
-                        ApplyDamage(rb, damagePerTick);
-                }
+                    ApplyDamage(t.gameObject, finalDamage);
             }
 
             if (applyTickDamage)
                 _damageTimer = 0f;
 
             if (!expired) return;
-            
-            if (impulseSource)
-            {
-                impulseSource.GenerateImpulse();
-            }
-            
-            AudioManager.TryPlayAudio(audioSource, explosionClip);
-            
-            if (audioSource)
-            {
-                audioSource.loop = false;
-            }
-            
-            if (blackHoleParticles)
-            {
-                blackHoleParticles.gameObject.SetActive(false);
-            }
-            
-            if (explosionParticles)
-            {
-                explosionParticles.Play();
-            }
-            
-            Destroy(gameObject, 2f);
 
+            if (impulseSource)
+                impulseSource.GenerateImpulse();
+
+            AudioManager.TryPlayAudio(audioSource, explosionClip);
+
+            if (audioSource)
+                audioSource.loop = false;
+
+            if (blackHoleParticles)
+                blackHoleParticles.gameObject.SetActive(false);
+
+            if (explosionParticles)
+                explosionParticles.Play();
+
+            Destroy(gameObject, 2f);
             enabled = false;
         }
 
-        private void Pull(Rigidbody rb)
+        private void StartPull(Transform target)
         {
-            rb.useGravity = false;
+            var pos = transform.position;
+            pos.y = target.position.y;
 
-            var direction = (transform.position - rb.position).normalized;
-            rb.AddForce(direction * pullForce, ForceMode.Acceleration);
+            LeanTween.move(target.gameObject, pos, pullTime)
+                .setEase(LeanTweenType.easeInQuad);
         }
 
-        private void Release(Rigidbody rb)
+        private static void ApplyDamage(GameObject obj, int damage)
         {
-            rb.useGravity = true;
-
-            var dir = (rb.position - transform.position).normalized;
-            rb.AddForce(dir * explosionForce, ForceMode.VelocityChange);
-
-            ApplyDamage(rb, finalDamage);
-        }
-
-        private static void ApplyDamage(Rigidbody rb, int damage)
-        {
-            var health = rb.GetComponent<Health.Health>();
+            var health = obj.GetComponent<Health.Health>();
             if (health)
                 health.ModifyHealth(-damage);
         }

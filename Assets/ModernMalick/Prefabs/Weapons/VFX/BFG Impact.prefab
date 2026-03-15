@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3817244301993063950}
   - component: {fileID: 4168889513765747593}
-  - component: {fileID: 3981722130914948494}
   - component: {fileID: 8700308188075413342}
   m_Layer: 6
   m_Name: BFG Impact
@@ -50,41 +49,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ModernMalick.Player.Arsenal.BlackHole
   radius: 10
-  pullForce: 5
   pullTime: 2.25
   pullMask:
     serializedVersion: 2
     m_Bits: 128
   damageRate: 2
   damagePerTick: 6
-  explosionForce: 15
   finalDamage: 160
   impulseSource: {fileID: 8700308188075413342}
   audioSource: {fileID: 6099178999890026247}
   explosionClip: {fileID: 8300000, guid: fdc616161abe92e4f911164effc34bfb, type: 3}
   blackHoleParticles: {fileID: 3725065317981611434}
   explosionParticles: {fileID: 7105378669443592818}
---- !u!135 &3981722130914948494
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 373137040115092939}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 128
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 895
-  m_LayerOverridePriority: 1
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8700308188075413342
 MonoBehaviour:
   m_ObjectHideFlags: 0

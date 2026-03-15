@@ -1,7 +1,7 @@
 using ModernMalick.Core.MonoBehaviourExtensions;
 using UnityEngine;
 
-namespace ModernMalick.Levels
+namespace ModernMalick.Interactables
 {
     [RequireComponent(typeof(Animator))]
     public class Gate : MonoBehaviourExtended

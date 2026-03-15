@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using ModernMalick.Audio;
 using ModernMalick.Core.LeanTween;
+using ModernMalick.VFX.Surface;
 using Unity.Cinemachine;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -146,6 +147,8 @@ namespace ModernMalick.Player.Arsenal.Guns
                         Health.Health.TryModifyHealth(hit.collider.gameObject, -damage);
                     }
                     Destroy(projectile);
+                    
+                    SurfaceManager.Instance.SpawnImpact(hit);
                 });
         }
         

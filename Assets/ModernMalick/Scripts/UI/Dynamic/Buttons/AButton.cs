@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ModernMalick.Common.UI.Dynamic.Buttons
+namespace ModernMalick.UI.Dynamic.Buttons
 {
     [RequireComponent(typeof(Button))]
     public abstract class AButton : MonoBehaviour

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace ModernMalick.Common.UI.Dynamic.Buttons
+namespace ModernMalick.UI.Dynamic.Buttons
 {
     public class ButtonScene : AButton
     {

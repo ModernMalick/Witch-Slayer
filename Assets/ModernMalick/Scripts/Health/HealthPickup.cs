@@ -1,3 +1,4 @@
+using ModernMalick.Core.Components;
 using ModernMalick.Player;
 using UnityEngine;
 

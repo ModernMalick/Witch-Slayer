@@ -1,4 +1,5 @@
 using ModernMalick.Audio;
+using ModernMalick.Core.Components;
 using UnityEngine;
 
 namespace ModernMalick.Player.Arsenal.Guns

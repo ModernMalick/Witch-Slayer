@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ModernMalick.Common.UI.Dynamic.Buttons
+namespace ModernMalick.UI.Dynamic.Buttons
 {
     public class ButtonQuit : AButton
     {

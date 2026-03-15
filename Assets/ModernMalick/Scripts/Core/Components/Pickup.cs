@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ModernMalick.Player
+namespace ModernMalick.Core.Components
 {
     [RequireComponent(typeof(BoxCollider))]
     public abstract class Pickup : MonoBehaviour

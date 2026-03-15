@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Peacekeeper
   m_EditorClassIdentifier: Assembly-CSharp::ModernMalick.Player.Arsenal.Guns.AmmoData
   infiniteAmmo: 0
-  startingAmmo: 0
+  startingAmmo: 2
