@@ -36,15 +36,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5448940112055208340}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -1.84, y: 0, z: 4.71}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5794091666755179766}
   - {fileID: 2205613062260194945}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &3720190606185126764
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c864b50dbdc4a2bab17f4cf7c2c9f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ModernMalick.Health.Health
-  startHealth: 20
-  maxHealth: 20
+  startHealth: 10
+  maxHealth: 10
 --- !u!114 &8446227721557151509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -542,9 +542,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6821075340969944532}
     m_Modifications:
+    - target: {fileID: 1209157207403426, guid: 8cccb88f6abce2445aec080d5a965bfb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1435744202117670, guid: 8cccb88f6abce2445aec080d5a965bfb, type: 3}
       propertyPath: m_Name
       value: Character_Goblin_Female_FixedScale
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770351390733852, guid: 8cccb88f6abce2445aec080d5a965bfb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4039909218076284, guid: 8cccb88f6abce2445aec080d5a965bfb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1667,7 +1675,16 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4119059406021868, guid: 8cccb88f6abce2445aec080d5a965bfb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 400225311996924755}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1209157207403426, guid: 8cccb88f6abce2445aec080d5a965bfb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3126999114641475771}
+    - targetCorrespondingSourceObject: {fileID: 1209157207403426, guid: 8cccb88f6abce2445aec080d5a965bfb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 29556334159089144}
+    - targetCorrespondingSourceObject: {fileID: 1209157207403426, guid: 8cccb88f6abce2445aec080d5a965bfb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5739799519370799967}
   m_SourcePrefab: {fileID: 100100000, guid: 8cccb88f6abce2445aec080d5a965bfb, type: 3}
 --- !u!4 &5794091666755179766 stripped
 Transform:
@@ -1684,6 +1701,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4416849132236772, guid: 8cccb88f6abce2445aec080d5a965bfb, type: 3}
   m_PrefabInstance: {fileID: 5798527114903712712}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5799732558834784362 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1209157207403426, guid: 8cccb88f6abce2445aec080d5a965bfb, type: 3}
+  m_PrefabInstance: {fileID: 5798527114903712712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3126999114641475771
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5799732558834784362}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Center: {x: 0, y: 0.1, z: 0}
+--- !u!114 &29556334159089144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5799732558834784362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c864b50dbdc4a2bab17f4cf7c2c9f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ModernMalick.Health.Health
+  startHealth: 0
+  maxHealth: 0
+--- !u!114 &5739799519370799967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5799732558834784362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e17d578f31ff0e6448f73982ebd9e138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ModernMalick.Health.HealthWeakpoint
+  targetHealth: {fileID: 8279110608810039728}
+  multiplier: 2
 --- !u!1001 &8241330169429945263
 PrefabInstance:
   m_ObjectHideFlags: 0

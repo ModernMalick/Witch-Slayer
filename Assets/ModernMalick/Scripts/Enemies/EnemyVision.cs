@@ -20,7 +20,7 @@ namespace ModernMalick.Enemies
         
         public bool IsTargetInView()
         {
-            return visionCone.currentHits.Any(hit => hit.collider.CompareTag("Player"));
+            return visionCone && visionCone.currentHits.Any(hit => hit.collider != null && hit.collider.CompareTag("Player"));
         }
 
         public bool IsTargetInActionRange()
